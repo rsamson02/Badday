@@ -1,7 +1,7 @@
-from accident.models import Name, Location, Foo, Number_Accidents
+from accident.models import AccidentType, VehicleType, Accident
 from django.contrib import admin
 
-admin.site.register(Name)
-admin.site.register(Location)
-admin.site.register(Foo)
-admin.site.register(Number_Accidents)
+admin.site.register(AccidentType)
+admin.site.register(Accident)
+admin.site.register(VehicleType)
+

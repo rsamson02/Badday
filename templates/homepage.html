@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block main %}
+
+<h1>Most Recent Accidents</h1>
+{% for crash in latest_accident_list %}
+
+
+<li><a href="{{ crash.get_absolute_url }}">{{crash.street}}, {{crash.city}}, {{crash.state}}, {{crash.pub_date}} </a>
+{% endfor %}</ul>
+
+
+{% endblock %}
+
+{% block accidenttypes %}
+          <h2>Browse by accident type</h2>
+<ul>{% for object in accident_types %}
+<li><a href="{{ object.get_absolute_url }}">{{ object.accident_type }}</a></li>
+{% endfor %}</ul>
+{% endblock %}
+
+{% block vehicletypes %}
+	  <h2>Browse by vehicle type</h2>
+<ul>{% for object in vehicle_types %}
+<li><a href="{{ object.get_absolute_url }}">{{ object.vehicle_type }}</a></li>
+{% endfor %}</ul>
+{% endblock %}

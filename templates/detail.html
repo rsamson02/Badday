@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% block main %}
+
+
+<a href = "{{crash.get_absolute_url}}">
+{{crash.street}}, {{crash.city}}, {{crash.state}}, {{crash.pub_date}} </a>
+
+
+{% endblock %}
+
+{% block accidenttypes %}
+
+<a href="{{ object.get_absolute_url }}">
+{{ object.accident_type }}</a>
+
+{% endblock %}

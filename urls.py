@@ -5,12 +5,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'badday.views.home', name='home'),
-    # url(r'^badday/', include('badday.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^$', 'accident.views.homepage', name='homepage'),
+    url(r'^accident/(?P<accident_id>\d+)/$', 'accident.views.detail'), 
+    url(r'^accident-types/(?P<accident_id>\d+)/$', 'accident.views.accident_typesdetail'),    
+    url(r'^vehicle-types/(?P<vehicle_id>\d+)/$', 'accident.views.vehicle_typesdetail'),
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),

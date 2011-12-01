@@ -1,26 +1,27 @@
 from django.db import models
 import datetime
 
-class Name(models.Model):
-    name = models.CharField(max_length=50)
-    pub_date = models.DateTimeField('date published')
-    age = models.CharField(max_length=50)
-    
-class Foo(models.Model):
-    Ticket_Choices = (
-        ('Y', 'Yes'),
-        ('N', 'No'),
-)
-    ticket = models.CharField(max_length=1, choices= Ticket_Choices)
+class AccidentType(models.Model):
+    accident_type = models.CharField(max_length=255)
+    def __unicode__(self):
+        return self.accident_type
+    def get_absolute_url(self):
+        return "accident-types/%i/" % self.id
 
-class Location(models.Model):
+class VehicleType(models.Model):
+    vehicle_type = models.CharField(max_length=255)
+    def __unicode__(self):
+        return self.vehicle_type
+    def get_absolute_url(self):
+        return "vehicle-types/%i/" % self.id
+    
+class Accident(models.Model):
     street = models.CharField(max_length=250)
     city = models.CharField(max_length=250)
     state = models.CharField(max_length=250)
     pub_date = models.DateTimeField('date published')
-    
-
-class Number_Accidents(models.Model):
-    accidents = models.IntegerField(blank=True)
-    
-
+    accident_type = models.ForeignKey(AccidentType)
+    vehicle_type = models.ManyToManyField(VehicleType)
+    ticket_issued = models.BooleanField()
+    def get_absolute_url(self):
+        return "/accident/%i/"% self.id

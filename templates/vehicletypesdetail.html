@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block main %}
+
+<h1>{{ vtype }}</h1>
+{% for crash in crashes %}
+
+
+<li><a href="{{ crash.get_absolute_url }}">{{crash.street}}, {{crash.city}}, {{crash.state}}, {{crash.pub_date}} </a>
+{% endfor %}</ul>
+
+
+{% endblock %}
+
